@@ -2,8 +2,11 @@ package lovage.players.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import lovage.domain.Player;
 
+@Stateless
 public class PlayersService implements IPlayersService {
 
 	@Override

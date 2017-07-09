@@ -6,12 +6,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+
 import lovage.domain.Player;
 import lovage.domain.Team;
 
+@Stateless
 public class TeamsServiceMock implements ITeamsService {
 
 	private static final Map<Long, Team> teams = initMockTeams();
+
+	@PostConstruct
+	public void init() {
+		System.out.println("Started TeamsServiceMock implementation for ITeamsService.");
+	}
 
 	@Override
 	public Team getTeam(Long id) {

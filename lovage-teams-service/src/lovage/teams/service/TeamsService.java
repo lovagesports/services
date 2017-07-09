@@ -2,9 +2,12 @@ package lovage.teams.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import lovage.domain.Player;
 import lovage.domain.Team;
 
+@Stateless
 public class TeamsService implements ITeamsService {
 
 	@Override

@@ -2,6 +2,7 @@ package lovage.teams.web.rest;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,12 +14,12 @@ import javax.ws.rs.core.MediaType;
 import lovage.domain.Player;
 import lovage.domain.Team;
 import lovage.teams.service.ITeamsService;
-import lovage.teams.service.TeamsServiceMock;
 
 @Path("teams")
 public class RestTeams {
 
-	private final ITeamsService service = new TeamsServiceMock();
+	@EJB(beanName="TeamsServiceMock")
+	private ITeamsService service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

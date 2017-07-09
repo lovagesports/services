@@ -6,14 +6,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+
 import org.apache.commons.lang.StringUtils;
 
 import lovage.domain.Player;
 import lovage.utils.KeyUtils;
 
+@Stateless
 public class PlayersServiceMock implements IPlayersService {
 
 	private static final Map<Long, Player> players = initMockPlayers();
+
+	@PostConstruct
+	public void init() {
+		System.out.println("Started PlayersServiceMock implementation for IPlayersService.");
+	}
 
 	@Override
 	public Player getPlayer(Long id) {

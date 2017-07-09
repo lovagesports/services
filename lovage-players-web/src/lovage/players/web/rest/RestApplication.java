@@ -7,6 +7,6 @@ import javax.ws.rs.core.Application;
 public class RestApplication extends Application {
 	
 	public RestApplication() {
-		System.out.println("started");
+		System.out.println("Players rest app started");
 	}
 }

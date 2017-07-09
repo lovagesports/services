@@ -2,6 +2,7 @@ package lovage.players.web.rest;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,12 +13,12 @@ import javax.ws.rs.core.MediaType;
 
 import lovage.domain.Player;
 import lovage.players.service.IPlayersService;
-import lovage.players.service.PlayersServiceMock;
 
 @Path("players")
 public class RestPlayers {
 
-	private final IPlayersService service = new PlayersServiceMock();
+	@EJB(beanName = "PlayersServiceMock")
+	private IPlayersService service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -34,7 +35,7 @@ public class RestPlayers {
 		Player player = service.getPlayer(id);
 		return player;
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -50,7 +51,7 @@ public class RestPlayers {
 
 		return service.create(player);
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

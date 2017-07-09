@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+
 import org.apache.commons.lang.StringUtils;
 
 import lovage.domain.Company;
@@ -13,10 +16,16 @@ import lovage.domain.Field;
 import lovage.domain.FieldType;
 import lovage.utils.KeyUtils;
 
+@Stateless
 public class CompaniesServiceMock implements ICompaniesService {
 
 	private static final Map<Long, Company> companies = initMockCompanies();
 
+	@PostConstruct
+	public void init() {
+		System.out.println("Started CompaniesServiceMock implementation for ICompaniesService.");
+	}
+	
 	@Override
 	public Company getCompany(Long id) {
 		Company company = companies.get(id);

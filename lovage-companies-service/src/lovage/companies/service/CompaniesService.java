@@ -2,9 +2,12 @@ package lovage.companies.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import lovage.domain.Company;
 import lovage.domain.Field;
 
+@Stateless
 public class CompaniesService implements ICompaniesService {
 
 	@Override

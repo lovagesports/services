@@ -2,6 +2,7 @@ package lovage.companies.web.rest;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,7 +11,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import lovage.companies.service.CompaniesServiceMock;
 import lovage.companies.service.ICompaniesService;
 import lovage.domain.Company;
 import lovage.domain.Field;
@@ -18,7 +18,8 @@ import lovage.domain.Field;
 @Path("companies")
 public class RestCompanies {
 
-	private final ICompaniesService service = new CompaniesServiceMock();
+	@EJB(beanName = "CompaniesServiceMock")
+	private ICompaniesService service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
