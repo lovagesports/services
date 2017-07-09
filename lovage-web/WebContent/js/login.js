@@ -17,7 +17,7 @@ function login() {
 		    if (result != null) {
 			sessionStorage.setItem("login", result.id + "#"
 				+ result.email);
-			window.location.href = 'index.html';
+			window.location.href = 'players/index.html';
 		    } else {
 
 			$
@@ -30,7 +30,7 @@ function login() {
 					    sessionStorage.setItem("login",
 						    result.id + "#"
 							    + result.email);
-					    window.location.href = 'index.html';
+					    window.location.href = 'companies/index.html';
 					} else {
 					    $("#message").show();
 					}
