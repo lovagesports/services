@@ -10,6 +10,8 @@ public interface IPlayersService {
 
 	Player getPlayer(Long id);
 
+	Player getPlayer(String email);
+
 	boolean create(Player player);
 
 	boolean validate(Player player);

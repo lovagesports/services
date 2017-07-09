@@ -2,7 +2,7 @@
 <!DOCTYPE openejb-jar>
 <openejb-jar>
 	<pojo-deployment
-		class-name="/lovage-players-web/src/lovage/players/web/rest/RestApplication.java">
+		class-name="/lovage-players-web/src/main/java/lovage/players/web/rest/RestApplication.java">
 		<properties>
 			cxf.jaxrs.skip-provider-scanning = true
 			cxf.jaxrs.providers = jsonDefaultProvider
