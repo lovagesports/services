@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lovage sports</title>
+<script type="text/javascript"
+    src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="js/create.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2">Add field</td>
+        </tr>
+        <tr>
+            <td>Company Id</td>
+            <td><input id="companyId" type="text" value="1"
+                disabled="disabled"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input id="name" type="text"></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><select id="type">
+                    <option value="Football">Football</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Basketball">Basketball</option>
+            </select>
+        </tr>
+        <tr>
+            <td>Length</td>
+            <td><input id="length" type="number"></td>
+        </tr>
+        <tr>
+            <td>Width</td>
+            <td><input id="width" type="number"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="create()">Create</button></td>
+        </tr>
+</table>
+</body>
+</html>
