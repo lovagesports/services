@@ -6,33 +6,16 @@ import org.apache.commons.lang.StringUtils;
 
 import lovage.domain.Player;
 
-public class PlayersServiceBase implements IPlayersService {
+public abstract class PlayersServiceBase implements IPlayersService {
 
-	@Override
-	public List<Player> getMinPlayers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract List<Player> getMinPlayers();
 
-	@Override
-	public Player getPlayer(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract Player getPlayer(Long id);
 
-	@Override
-	public Player getPlayer(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract Player getPlayer(String email);
 
-	@Override
-	public boolean create(Player player) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public abstract boolean create(Player player);
 
-	@Override
 	public boolean validate(Player player) {
 
 		if (StringUtils.isBlank(player.name)) {
@@ -58,7 +41,6 @@ public class PlayersServiceBase implements IPlayersService {
 		return true;
 	}
 
-	@Override
 	public Player login(Player player) {
 
 		Player found = getPlayer(player.email);

@@ -15,7 +15,7 @@ import lovage.domain.Player;
 import lovage.utils.KeyUtils;
 
 @Stateless
-public class PlayersServiceMock extends PlayersServiceBase {
+public class PlayersServiceMock extends PlayersServiceBase implements IPlayersService {
 
 	private static final Map<Long, Player> players = initMockPlayers();
 
