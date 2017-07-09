@@ -2,6 +2,7 @@ package lovage.fields.web.rest;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,14 +12,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import lovage.domain.Field;
-import lovage.fields.service.FieldsServiceMock;
 import lovage.fields.service.IFieldsService;
 
 @Path("fields")
 public class RestFields {
 
-	private final IFieldsService service = new FieldsServiceMock();
-	
+	@EJB(beanName = "FieldsServiceMock")
+	private IFieldsService service;
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
@@ -34,7 +35,7 @@ public class RestFields {
 		Field field = service.getField(id);
 		return field;
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

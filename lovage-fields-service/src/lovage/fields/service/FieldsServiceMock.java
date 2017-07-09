@@ -6,13 +6,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+
 import lovage.domain.Field;
 import lovage.domain.FieldType;
 import lovage.utils.KeyUtils;
 
+@Stateless
 public class FieldsServiceMock implements IFieldsService {
 
 	private static final Map<Long, Field> fields = initMockFields();
+
+	@PostConstruct
+	public void init() {
+		System.out.println("Started FieldsServiceMock implementation for IFieldsService.");
+	}
 
 	@Override
 	public Field getField(Long id) {
