@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openejb-jar>
+<openejb-jar>
+	<pojo-deployment
+		class-name="/lovage-teams-web/src/lovage/teams/web/rest/RestApplication.java">
+		<properties>
+			cxf.jaxrs.providers=com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider
+		</properties>
+	</pojo-deployment>
+</openejb-jar>
