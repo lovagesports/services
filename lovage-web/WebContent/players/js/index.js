@@ -1,24 +1,6 @@
 var selectedPlayer = null;
 var players = null;
 
-var selectedTeam = null;
-var teams = null;
-
-var selectedCompany = null;
-var companies = null;
-
-function findPlayerLocal(id, players) {
-    if (players != null) {
-	var arr = $.grep(players, function(a) {
-	    return a.id == id;
-	});
-
-	var identifiedPlayer = arr[0];
-	return identifiedPlayer;
-    }
-    return null;
-}
-
 function findTeam(id, callback) {
     $.get({
 	url : "http://localhost:8080/lovage-teams-web/teams/" + id,
@@ -43,23 +25,6 @@ function findTeamLocal(id, teams) {
     return null;
 }
 
-function findCompany(id, companies) {
-    if (companies != null) {
-	var arr = $.grep(companies, function(a) {
-	    return a.id == id;
-	});
-
-	var identifiedCompany = arr[0];
-	return identifiedCompany;
-    }
-    return null;
-}
-
-function selectPlayer(id) {
-    selectedPlayer = findPlayerLocal(id, players);
-    $('#selectedPlayerContent').text('Selected player: ' + selectedPlayer.name);
-}
-
 function displayTeams(teams) {
     $("#teamsSelect").html('<select></select>');
     teams.forEach(displayTeamOption);
@@ -74,6 +39,7 @@ function displayTeams(teams) {
 	    }
 	});
     });
+    $("#teamsSelect select").change();
 }
 
 function displayTeamOption(item, index) {
@@ -110,70 +76,6 @@ function displayTeam(team, content) {
 			+ player.id + "'>" + player.name + "</a></p>");
 		article.append(p6);
 	    });
-}
-
-function displayPlayers(players) {
-    $("#playersContent").html('');
-    players.forEach(displayPlayer);
-}
-
-function displayPlayer(item, index) {
-    h1 = $("<h1></h1>").text(item.name);
-    a1 = $("<a href='player.html?playerid=" + item.id + "'></a>").append(h1);
-    a2 = $("<a href='#' onclick='selectPlayer(" + item.id + ");'>Select</a>")
-    article = $("<article></article>").append(a1, a2);
-
-    $("#playersContent").append(article);
-}
-
-function displayCompanies(companies) {
-    $("#companiesSelect").html('<select></select>');
-    companies.forEach(displayCompanyOption);
-    $("#companiesSelect select").change(
-	    function() {
-		var selectedCompanyId = $(
-			"#companiesSelect select option:selected").val();
-		selectedCompany = findCompany(selectedCompanyId, companies);
-		displayCompany(selectedCompany, $("#companiesContent"));
-	    });
-}
-
-function displayCompanyOption(item, index) {
-    var option = $("<option></option>").val(item.id).append(item.name);
-    $("#companiesSelect select").append(option);
-}
-
-function displayCompany(company, content) {
-    content.html('');
-    var article = $("<article></article>");
-    content.append(article);
-
-    h1 = $("<h1></h1>").text(company.name);
-    article.append(h1);
-
-    company.fields
-	    .forEach(function(field, index) {
-		p6 = $("<p><a href='http://localhost:8080/lovage-web/fields/view.html?id="
-			+ field.id + "'>" + field.name + "</a></p>");
-		article.append(p6);
-	    });
-}
-
-function addSelectedPlayerToSelectedTeam() {
-
-    $.post({
-	url : "http://localhost:8080/lovage-teams-web/teams/" + selectedTeam.id
-		+ "/add",
-	data : JSON.stringify(selectedPlayer),
-	contentType : "application/json; charset=utf-8",
-	success : function(result) {
-
-	    if (result === true) {
-		selectedTeam.players.push(selectedPlayer);
-		displayTeams(teams);
-	    }
-	}
-    });
 }
 
 function checkLogin() {
@@ -226,28 +128,11 @@ function initialize() {
 	}
     });
 
-    var playersLoaded = $.get({
-	url : "http://localhost:8080/lovage-players-web/players/",
-	success : function(result) {
-	    players = result;
-	    displayPlayers(players);
-	}
+    $.when(teamsLoaded).done(function(resultTeamsLoaded) {
+
     });
 
-    var companiesLoaded = $.get({
-	url : "http://localhost:8080/lovage-companies-web/companies/",
-	success : function(result) {
-	    companies = result;
-	    displayCompanies(companies);
-	}
-    });
-
-    $.when(teamsLoaded, playersLoaded, companiesLoaded).done(
-	    function(resultTeamsLoaded, resultPlayersLoaded,
-		    resultCompaniesLoaded) {
-
-		checkLogin();
-	    });
+    checkLogin();
 
     $("#menuLogout td a").click(function() {
 	sessionStorage.removeItem("login");
