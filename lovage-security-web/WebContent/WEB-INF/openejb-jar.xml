@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE openejb-jar>
+<openejb-jar>
+	<pojo-deployment
+		class-name="/lovage-security-web/src/main/java/lovage/security/web/rest/RestApplication.java">
+		<properties>
+			cxf.jaxrs.skip-provider-scanning = true
+			cxf.jaxrs.providers = jsonDefaultProvider
+		</properties>
+	</pojo-deployment>
+</openejb-jar>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources>
+<resources>
+	<Service id="jsonDefaultProvider"
+		class-name="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider">
+		# any config
+		bufferSize = 1048576
+	</Service>
+</resources>
