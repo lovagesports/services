@@ -12,6 +12,9 @@
         <dependent-module archiveName="lovage-commons-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/lovage-commons/lovage-commons">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="lovage-security-users-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/lovage-security-users/lovage-security-users">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/lovage-players-web/build/classes"/>
         <property name="context-root" value="lovage-players-web"/>
     </wb-module>
