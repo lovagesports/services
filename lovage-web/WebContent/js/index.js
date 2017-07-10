@@ -17,7 +17,7 @@ function checkLogin() {
 	if (loggedIn == null) {
 	    forceLogin();
 	} else {
-	    $("#menuLogout td label").text(loggedIn.name);
+	    // TODO: redirect to correct index
 	}
     }
 }
