@@ -3,7 +3,7 @@ package lovage.security.service;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import lovage.domain.User;
 import lovage.security.users.IUsersService;
